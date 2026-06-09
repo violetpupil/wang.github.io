@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>服务评价反馈 · 扫码入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9fafc;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            padding: 32px 20px;
+        }
+
+        .feedback-container {
+            max-width: 860px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+            padding: 32px 24px 44px 24px;
+            transition: all 0.2s ease;
+        }
+
+        .guide-header {
+            text-align: center;
+            margin-bottom: 28px;
+            position: relative;
+        }
+
+        .guide-header h2 {
+            font-size: 26px;
+            font-weight: 600;
+            color: #0a2b3e;
+            letter-spacing: -0.3px;
+            margin-bottom: 8px;
+        }
+
+        .guide-text {
+            text-align: center;
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        .guide-text p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1e3a4d;
+            background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+            display: inline-block;
+            padding: 0 8px;
+        }
+
+        .qr-grid {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 48px;
+            width: 100%;
+            margin: 20px 0 12px 0;
+        }
+
+        .qr-item {
+            flex: 1;
+            min-width: 220px;
+            max-width: 280px;
+            text-align: center;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 18px 12px 20px 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .qr-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -12px rgba(0, 32, 64, 0.12);
+            background: #fefefe;
+        }
+
+        .qr-img-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 14px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 6px;
+        }
+
+        .qr-code {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s;
+            display: block;
+        }
+
+        .scan-label {
+            font-size: 17px;
+            font-weight: 500;
+            color: #2c4f6e;
+            margin-top: 12px;
+            letter-spacing: -0.2px;
+            background: transparent;
+            display: block;
+            padding: 0;
+            border-radius: 0;
+        }
+
+        .extra-note {
+            text-align: center;
+            margin-top: 46px;
+            padding-top: 16px;
+            border-top: 1px solid #edf2f7;
+            font-size: 15px;
+            color: #2c4c6c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            font-weight: 480;
+        }
+
+        .extra-note span {
+            background: #f0f5fa;
+            padding: 7px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #1f4e6e;
+            letter-spacing: -0.2px;
+        }
+
+        @media (max-width: 640px) {
+            .feedback-container {
+                padding: 24px 16px 36px 16px;
+                border-radius: 22px;
+            }
+
+            .guide-header h2 {
+                font-size: 22px;
+            }
+
+            .guide-text p {
+                font-size: 16px;
+            }
+
+            .qr-grid {
+                gap: 32px;
+            }
+
+            .qr-item {
+                min-width: 180px;
+                padding: 14px 8px 16px 8px;
+                border-radius: 18px;
+            }
+
+            .qr-code {
+                max-width: 170px;
+                border-radius: 10px;
+            }
+
+            .scan-label {
+                font-size: 15px;
+                margin-top: 10px;
+            }
+
+            .extra-note {
+                margin-top: 32px;
+                font-size: 13px;
+                gap: 16px;
+            }
+
+            .extra-note span {
+                padding: 5px 16px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .qr-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 28px;
+            }
+
+            .qr-item {
+                max-width: 260px;
+                width: 100%;
+            }
+
+            .guide-text p {
+                font-size: 17px;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #101214;
+            }
+
+            .feedback-container {
+                background: #1c2128;
+                box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
+                border-radius: 28px;
+            }
+
+            .guide-header h2 {
+                color: #eef4ff;
+            }
+
+            .guide-text p {
+                background: transparent;
+                color: #dbeafe;
+            }
+
+            .qr-item {
+                background: #252b33;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                border-radius: 20px;
+            }
+
+            .qr-item:hover {
+                background: #2d343e;
+                box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+            }
+
+            .scan-label {
+                color: #cde2f5;
+                background: transparent;
+            }
+
+            .extra-note {
+                border-top-color: #2f3a44;
+            }
+
+            .extra-note span {
+                background: #242e38;
+                color: #cbddee;
+            }
+
+            .qr-code {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+            }
+
+            .qr-img-wrapper {
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="feedback-container">
+        <div class="guide-header">
+            <h2>📋 服务体验反馈</h2>
+        </div>
+        <div class="guide-text">
+            <p>✨ 请对此软件的使用体验进行评价和反馈，谢谢 ✨</p>
+        </div>
+
+        <div class="qr-grid">
+            <div class="qr-item">
+                <div class="qr-img-wrapper">
+                    < img class="qr-code" src="https://bee-reg-ab.imagency.cn/e/73943695760cc816789877e38c73a3f7.png"
+                        alt="微信扫码评价二维码" loading="lazy">
+                </div>
+                <div class="scan-label">微信扫码</div>
+            </div>
+            <div class="qr-item">
+                <div class="qr-img-wrapper">
+                    < img class="qr-code" src="https://bee-reg-ab.imagency.cn/e/a97a4a2125e23b256fc0b4063b4ea26e.png"
+                        alt="平安证券APP扫码评价二维码" loading="lazy">
+                </div>
+                <div class="scan-label">平安证券APP扫码</div>
+            </div>
+        </div>
+
+        <div class="extra-note">
+            <span>⏱️ 预计耗时1分钟</span>
+            <span>💡 您的意见驱动我们变得更好</span>
+        </div>
+    </div>
+</body>
+
+</html>
